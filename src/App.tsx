@@ -1,17 +1,58 @@
+import { useRoom } from './hooks/useRoom';
+import { JoinRoom } from './components/JoinRoom';
+import { Lobby } from './components/Lobby';
+import { Game } from './components/Game';
+
 function App() {
+  const {
+    roomCode,
+    playerId,
+    roomState,
+    error,
+    isHost,
+    createRoom,
+    joinRoom,
+    leaveRoom,
+    startGame,
+    clearError
+  } = useRoom();
+
+  // Экран ввода имени и выбора комнаты
+  if (!roomCode || !playerId) {
+    return (
+      <JoinRoom
+        onCreateRoom={createRoom}
+        onJoinRoom={joinRoom}
+        error={error}
+        onClearError={clearError}
+      />
+    );
+  }
+
+  // Лобби - ожидание игроков
+  if (roomState.gamePhase === 'lobby') {
+    return (
+      <Lobby
+        roomCode={roomCode}
+        players={roomState.players}
+        currentPlayerId={playerId}
+        isHost={isHost}
+        onStartGame={startGame}
+        onLeave={leaveRoom}
+      />
+    );
+  }
+
+  // Игра
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
-          Bumashki
-        </h1>
-        <p className="text-gray-600">
-          React + TypeScript + Tailwind CSS
-        </p>
-      </div>
-    </div>
-  )
+    <Game
+      roomCode={roomCode}
+      players={roomState.players}
+      currentPlayerId={playerId}
+      isHost={isHost}
+      onLeave={leaveRoom}
+    />
+  );
 }
 
-export default App
-
+export default App;
