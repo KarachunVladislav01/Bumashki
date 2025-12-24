@@ -52,7 +52,7 @@ export function Lobby({
         {/* Карточка с игроками */}
         <div className="bg-slate-800/50 backdrop-blur-xl rounded-3xl p-6 shadow-2xl border border-slate-700/50 mb-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-slate-200 font-semibold">Игроки в комнате</h2>
+            <h2 className="text-slate-200 font-semibold">Players in room</h2>
             <span className="px-3 py-1 bg-slate-700/50 rounded-full text-slate-400 text-sm">
               {players.length}
             </span>
@@ -78,7 +78,7 @@ export function Lobby({
                   }`}>
                     {player.name}
                     {player.id === currentPlayerId && (
-                      <span className="text-slate-500 text-sm ml-2">(вы)</span>
+                      <span className="text-slate-500 text-sm ml-2">(you)</span>
                     )}
                   </p>
                 </div>
@@ -86,7 +86,7 @@ export function Lobby({
                 {/* Бейдж админа */}
                 {player.isHost && (
                   <span className="px-2 py-1 bg-amber-500/20 text-amber-400 text-xs font-medium rounded-lg">
-                    Админ
+                    Host
                   </span>
                 )}
               </div>
@@ -100,7 +100,7 @@ export function Lobby({
                 <div className="w-8 h-8 rounded-full border-2 border-dashed border-slate-600 flex items-center justify-center animate-pulse">
                   <span className="text-slate-600">?</span>
                 </div>
-                <p className="text-sm">Ожидание других игроков...</p>
+                <p className="text-sm">Waiting for other players...</p>
               </div>
             </div>
           )}
@@ -115,7 +115,7 @@ export function Lobby({
               disabled={!canStart}
               className="w-full py-4 px-6 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-400 hover:to-green-400 disabled:from-slate-600 disabled:to-slate-600 disabled:cursor-not-allowed text-white disabled:text-slate-400 font-bold rounded-2xl transition-all duration-200 transform hover:scale-[1.02] active:scale-[0.98] disabled:transform-none shadow-lg shadow-emerald-500/25 disabled:shadow-none text-lg"
             >
-              {canStart ? '▶ Старт' : `Нужно минимум 2 игрока`}
+              {canStart ? '▶ Start' : `Need at least 2 players`}
             </button>
           )}
 
@@ -124,7 +124,7 @@ export function Lobby({
             <div className="w-full py-4 px-6 bg-slate-700/30 text-slate-400 text-center font-medium rounded-2xl border border-slate-700/50">
               <div className="flex items-center justify-center gap-2">
                 <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse"></div>
-                Ожидание старта от админа...
+                Waiting for host to start...
               </div>
             </div>
           )}
@@ -138,7 +138,7 @@ export function Lobby({
                 : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
             }`}
           >
-            {isHost ? 'Закрыть комнату' : 'Выйти из комнаты'}
+            {isHost ? 'Close room' : 'Leave room'}
           </button>
         </div>
       </div>

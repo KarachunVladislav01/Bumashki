@@ -14,14 +14,14 @@ export function Game({ roomCode, players, currentPlayerId, onLeave }: GameProps)
         {/* Заголовок */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-200 to-orange-400 mb-2">
-            Игра началась!
+            Game started!
           </h1>
-          <p className="text-slate-400">Комната: {roomCode}</p>
+          <p className="text-slate-400">Room: {roomCode}</p>
         </div>
 
         {/* Список игроков */}
         <div className="bg-slate-800/50 backdrop-blur-xl rounded-3xl p-6 shadow-2xl border border-slate-700/50 mb-6">
-          <h2 className="text-slate-200 font-semibold mb-4">Игроки в игре</h2>
+          <h2 className="text-slate-200 font-semibold mb-4">Players in game</h2>
           
           <div className="grid grid-cols-2 gap-3">
             {players.map((player) => (
@@ -38,7 +38,7 @@ export function Game({ roomCode, players, currentPlayerId, onLeave }: GameProps)
                 }`}>
                   {player.name}
                   {player.id === currentPlayerId && (
-                    <span className="text-slate-500 text-xs ml-1">(вы)</span>
+                    <span className="text-slate-500 text-xs ml-1">(you)</span>
                   )}
                 </p>
               </div>
@@ -49,10 +49,10 @@ export function Game({ roomCode, players, currentPlayerId, onLeave }: GameProps)
         {/* Заглушка для игровой логики */}
         <div className="bg-slate-800/30 rounded-3xl p-8 border border-dashed border-slate-700 mb-6">
           <p className="text-slate-500">
-            Здесь будет игровая логика
+            Game logic goes here
           </p>
           <p className="text-slate-600 text-sm mt-2">
-            (добавьте свою механику игры)
+            (add your game mechanics)
           </p>
         </div>
 
@@ -60,7 +60,7 @@ export function Game({ roomCode, players, currentPlayerId, onLeave }: GameProps)
           onClick={onLeave}
           className="py-3 px-6 text-slate-400 hover:text-red-400 font-medium rounded-2xl transition-colors text-sm"
         >
-          Покинуть игру
+          Leave game
         </button>
       </div>
     </div>

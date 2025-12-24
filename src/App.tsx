@@ -1,7 +1,7 @@
 import { useRoom } from './hooks/useRoom';
-import { JoinRoom } from './components/JoinRoom';
-import { Lobby } from './components/Lobby';
-import { Game } from './components/Game';
+import { JoinRoom } from './pages/JoinRoom';
+import { Lobby } from './pages/Lobby';
+import { Game } from './pages/Game';
 
 function App() {
   const {
