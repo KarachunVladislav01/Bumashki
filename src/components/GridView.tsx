@@ -82,23 +82,20 @@ export function GoogleMeetLikeGrid<T>({
 
   return (
     <div className={`min-h-screen w-full bg-white ${className}`}>
-      {/* mobile landscape blocker */}
       <div className="mobileLandscapeBlocker fixed inset-0 z-50 hidden items-center justify-center bg-white p-6 text-center">
         <div className="max-w-sm">
-          <div className="text-lg font-semibold">Поверни телефон вертикально</div>
+          <div className="text-lg font-semibold">Rotate your phone to portrait mode</div>
           <div className="mt-2 text-sm text-neutral-600">
-            Этот экран работает только в книжной ориентации.
+            This screen only works in portrait mode.
           </div>
         </div>
       </div>
 
-      {/* линии между рядами на всю ширину */}
       <div ref={ref} className="flex h-screen w-full flex-col bg-white divide-y divide-neutral-200">
         {rowsArr.map((row, r) => {
           const isFullRow = row.length === cols;
 
           if (isFullRow) {
-            // Полный ряд: бордеры по всей ширине, как обычная сетка
             return (
               <div key={r} className="flex flex-1 w-full divide-x divide-neutral-200">
                 {row.map(({ item, idx }) => (
@@ -114,7 +111,6 @@ export function GoogleMeetLikeGrid<T>({
             );
           }
 
-          // Неполный ряд: центрируем группу и делаем бордеры слева/справа у группы
           const groupW = tileW * row.length;
 
           return (

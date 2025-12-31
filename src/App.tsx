@@ -31,18 +31,6 @@ function App() {
     clearError
   } = useRoom();
 
-  if (participants.length > 0) {
-    return <GoogleMeetLikeGrid
-      items={participants}
-      renderItem={(p) => (
-        <div className="h-full w-full flex items-center justify-center">
-          <div className="text-xl font-semibold">{p.name}</div>
-        </div>
-      )}
-    />
-  }
-
-  // Экран ввода имени и выбора комнаты
   if (!roomCode || !playerId) {
     return (
       <JoinRoom
@@ -54,7 +42,6 @@ function App() {
     );
   }
 
-  // Лобби - ожидание игроков
   if (roomState.gamePhase === 'lobby') {
     return (
       <Lobby
@@ -69,7 +56,6 @@ function App() {
     );
   }
 
-  // Игра
   return (
     <Game
       players={roomState.players}
