@@ -7,7 +7,7 @@ interface GameProps {
   onLeave: () => void;
 }
 
-export function Game({ players, currentPlayerId, onLeave }: GameProps) {
+export function Game({ players, currentPlayerId, onLeave: _onLeave }: GameProps) {
   const visiblePlayers = players.filter((player) => player.id !== currentPlayerId);
 
   return (
