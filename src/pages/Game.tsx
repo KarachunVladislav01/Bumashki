@@ -14,9 +14,9 @@ export function Game({ players, currentPlayerId, onLeave: _onLeave }: GameProps)
      <GridList
       items={visiblePlayers}
       renderItem={(p) => (
-        <div className="h-full w-full flex items-center justify-center">
-          <div className="text-xl font-semibold">{p.name}</div>
-          <div className="text-sm text-gray-500">{p.word}</div>
+        <div className="h-full w-full flex items-center justify-center gap-4 flex-col">
+          <div className="text-4xl text-gray-500">{p.name}</div>
+          <div className="text-4xl font-semibold">{p.word}</div>
         </div>
       )}
     />
